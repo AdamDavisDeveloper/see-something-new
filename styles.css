@@ -10,6 +10,12 @@ html {
 
 h1 {
 	font-size: 2rem;
+	margin-bottom: 0.5rem;
+}
+
+a {
+	/* text-decoration: none; */
+	color: black;
 }
 
 #PageWrapper {
@@ -23,7 +29,7 @@ h1 {
 }
 
 #Image {
-	margin: 3rem 0rem;
+	margin: 2.5rem 0rem;
 	height: 400px;
 	width: 400px;
 	border: 6px solid rgb(151, 151, 151);
