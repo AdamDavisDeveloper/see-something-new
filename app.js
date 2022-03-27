@@ -43,4 +43,4 @@ document.getElementById("Refresh").addEventListener("click", (e) => {
 	window.location.reload();
 });
 
-// createNewImage();
+createNewImage();
