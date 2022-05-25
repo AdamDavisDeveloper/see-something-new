@@ -5,8 +5,7 @@ let imgWidth = Image.clientWidth;
 function createRows() {
 	for (let i = 0; i < imgHeight; i++) {
 		const row = document.createElement("div");
-		row.classList.add("image-row");
-		row.classList.add(`i-${i}`);
+		row.classList.add("image-row", `i-${i}`);
 		Image.appendChild(row);
 	}
 }
@@ -16,8 +15,7 @@ function fillRows() {
 	allRows.forEach((row) => {
 		for (let i = 0; i < imgWidth; i++) {
 			const singleton = document.createElement("div");
-			singleton.classList.add("singleton");
-			singleton.classList.add(`i-${i}`);
+			singleton.classList.add("singleton", `i-${i}`);
 			singleton.style.background = randomColor();
 			row.appendChild(singleton);
 		}
@@ -27,8 +25,7 @@ function fillRows() {
 const randomColor = () => {
 	let color = "#";
 	for (let i = 0; i < 6; i++) {
-		const random = Math.random();
-		const bit = (random * 16) | 0;
+		const bit = (Math.random() * 16) | 0;
 		color += bit.toString(16);
 	}
 	return color;
