@@ -1,43 +1,29 @@
-const Image = document.getElementById("Image");
-let imgHeight = Image.clientHeight;
-let imgWidth = Image.clientWidth;
+const ImageElement = document.getElementById("Image");
 
-function createRows() {
-	for (let i = 0; i < imgHeight; i++) {
-		const row = document.createElement("div");
-		row.classList.add("image-row", `i-${i}`);
-		Image.appendChild(row);
-	}
-}
+function createNewImage() {
+    const imgHeight = ImageElement.clientHeight;
+    const imgWidth = ImageElement.clientWidth;
 
-function fillRows() {
-	const allRows = document.querySelectorAll(".image-row");
-	allRows.forEach((row) => {
-		for (let i = 0; i < imgWidth; i++) {
-			const singleton = document.createElement("div");
-			singleton.classList.add("singleton", `i-${i}`);
-			singleton.style.background = randomColor();
-			row.appendChild(singleton);
-		}
-	});
+    let allRows = '';
+
+    for (let y = 0; y < imgHeight; y++) {
+        let row = '<div class="image-row" style="height: 1px;">';
+        for (let x = 0; x < imgWidth; x++) {
+            row += `<div class="singleton" style="background: ${randomColor()}; width: 1px; height: 1px;"></div>`;
+        }
+        row += '</div>';
+        allRows += row;
+    }
+
+    ImageElement.innerHTML = allRows;
 }
 
 const randomColor = () => {
-	let color = "#";
-	for (let i = 0; i < 6; i++) {
-		const bit = (Math.random() * 16) | 0;
-		color += bit.toString(16);
-	}
-	return color;
+    return '#' + Math.floor(Math.random()*16777215).toString(16).padEnd(6, '0');
 };
 
-function createNewImage() {
-	createRows();
-	fillRows();
-}
-
-document.getElementById("Refresh").addEventListener("click", (e) => {
-	window.location.reload();
+document.getElementById("Refresh").addEventListener("click", () => {
+    window.location.reload();
 });
 
 createNewImage();
